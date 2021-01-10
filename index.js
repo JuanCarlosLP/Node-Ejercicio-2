@@ -5,7 +5,6 @@ let path = require("path");
 let app = express();
 
 app.use(express.static("public"));
-app.use(express.static("assets"));
 app.use(express.urlencoded({extended: false})); 
 
 app.get("/", (request, response) => {
@@ -24,7 +23,7 @@ app.get("/proyectos", (request, response) => {
     response.sendFile(path.join(__dirname, "projects.html"));
 });
 
-app.post("/usuarios", (request, response) => {    
+app.post("/usuario", (request, response) => {    
     fs.writeFile("usuarios_db.txt", JSON.stringify(request.body), (error) => {
         if(error){
             console.log(error);
